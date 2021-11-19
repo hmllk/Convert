@@ -1,11 +1,11 @@
-FROM registry-docker.pamirs.com/dotnetsdk-yarn:latest AS build-env
+FROM mcr.microsoft.com/dotnet/core/aspnet:3.1-buster-slim AS build-env
 WORKDIR /commonservice
 
 COPY . ./
  
 RUN dotnet publish -c Release -o out
 
-FROM  registry-docker.pamirs.com/aspnet:3.1
+FROM  mcr.microsoft.com/dotnet/core/aspnet:3.1-buster-slim
 WORKDIR /commonservice
 
 ADD sources.list  /etc/apt/
@@ -24,8 +24,6 @@ RUN apt-get update \
 ADD .  /commonservice
 RUN tar -xzvf LibreOffice_7.1.4_Linux_x86-64_deb.tar.gz  \
        && dpkg -i  LibreOffice_7.1.4.2_Linux_x86-64_deb/DEBS/*.deb
-
-#RUN ln -s /opt/libreoffice7.1
 
 COPY --from=build-env /commonservice/out/ .
 
