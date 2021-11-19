@@ -1,8 +1,7 @@
 cd /data/convert/
 docker build -t convertservice .
 
-docker run  -d -p 9999:9999 --name convertservice -v /storage/data/convertservice/data:/app/wwwroot -v /usr/bin/gs:/usr/bin/gs  convertservice
-docker run  -d -p 9999:9999 --name convertservice -v /usr/share/fonts
+docker run  -d -p 9999:9999 --name convertservice -v /usr/share/fonts:/usr/share/fonts convertservice
 
 docker logs convertservice
 http://ip:9999/convert/wordtopdf
