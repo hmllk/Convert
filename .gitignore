@@ -7,7 +7,6 @@ output/
 out/
 **/wwwroot/lib
 # Wechat App
-miniprogram_npm/
 .DS_Store
 
 # User-specific files
