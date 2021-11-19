@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Convert", "Convert\Convert.csproj", "{5749A9D4-9B9C-4616-B1AE-88054841F3F5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution", "Solution", "{596430AE-DA6C-4317-8F82-BF73421129E9}"
+ProjectSection(SolutionItems) = preProject
+	Dockerfile = Dockerfile
+	readme.txt = readme.txt
+	.gitignore = .gitignore
+	.gitlab-ci.yml = .gitlab-ci.yml
+	nuget.config = nuget.config
+	sources.list = sources.list
+EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5749A9D4-9B9C-4616-B1AE-88054841F3F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5749A9D4-9B9C-4616-B1AE-88054841F3F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5749A9D4-9B9C-4616-B1AE-88054841F3F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5749A9D4-9B9C-4616-B1AE-88054841F3F5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
