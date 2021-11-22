@@ -49,7 +49,7 @@ namespace Convert.Extension
                     image.Format = MagickFormat.Png;
                     //image.Density = new Density(1000);
                     image.Quality = 100;
-                    string imgPath = $"{filePath}_{i}.png"; //相对路径   
+                    string imgPath = $"{fileName}_{i}.png"; //相对路径   
                     string filename = Path.Combine(outDir, imgPath);
                     await image.WriteAsync(filename);
                 }
