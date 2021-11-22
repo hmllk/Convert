@@ -26,8 +26,8 @@ namespace Convert.Controllers
             _officeService = officeService;
         }
 
-        [HttpPost("wordtoimg")]
-        public async Task<IActionResult> WordToImgs([FromBody] PDFPostModel post)
+         [HttpPut("wordtoimg")]
+        public async Task<IActionResult> WordToImgs(string key)
         {
             var formFile = HttpContext.Request.Form?.Files?.FirstOrDefault();
             if (formFile == null)
@@ -36,8 +36,8 @@ namespace Convert.Controllers
             }
 
             //保留到本地
-            var strPath = Path.Combine(AppContext.BaseDirectory, "wwwroot", $"{post.Key}",
-                $"{DateTime.Now:s}");
+            var strPath = Path.Combine(AppContext.BaseDirectory, "wwwroot", $"{key}",
+                $"{DateTime.Now.ToString("yyyyMMddhhmmssfff")}");
             if (!Directory.Exists(strPath))
             {
                 Directory.CreateDirectory(strPath);
@@ -59,8 +59,10 @@ namespace Convert.Controllers
             _officeService.ConvertToPdf(path, strPath);
 
             //转为img
-            var pdfFile = Path.Combine(strPath, $"{formFile.Name}.pdf");
-            await _officeService.PdfToImage(formFile.Name, pdfFile, strPath);
+            var filaName=  Path.GetFileNameWithoutExtension(path);
+            
+            var pdfFile = Path.Combine(strPath, $"{filaName}.pdf");
+            await _officeService.PdfToImage(filaName, pdfFile, strPath);
             return new JsonResult("ok");
         }
     }
