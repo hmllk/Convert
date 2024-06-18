@@ -25,6 +25,12 @@ ADD .  /commonservice
 RUN tar -xzvf LibreOffice_7.1.4_Linux_x86-64_deb.tar.gz  \
        && dpkg -i  LibreOffice_7.1.4.2_Linux_x86-64_deb/DEBS/*.deb
 
+COPY ./SourceHanSansSC-Normal.otf /usr/share/fonts
+COPY ./SourceHanSansSC-Bold.otf /usr/share/fonts
+COPY ./SourceHanSansSC-Medium.otf /usr/share/fonts
+COPY ./MSYH.TTC /usr/share/fonts
+RUN mkfontscale && mkfontdir && fc-cache
+
 COPY --from=build-env /commonservice/out/ .
 
 ENTRYPOINT ["dotnet", "Convert.dll"]
